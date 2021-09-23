@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() =>{
+    const names = ['Maria', 'Sami', 'Ilmari', 'Unto', 'Elma'];
+    setItems(names);
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Names</h3>
+      <ul>
+        {items.map(item=>(
+          <li key={item}>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
